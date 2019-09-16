@@ -23,11 +23,13 @@ class PickerColumn extends Component {
     };
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentDidUpdate(prevProps                                                                                                                                                    ) {
     if (this.state.isMoving) {
       return;
     }
-    this.setState(this.computeTranslate(nextProps));
+    if (prevProps !== this.props) {
+	    this.setState(this.computeTranslate(this.props));
+    }
   }
 
   computeTranslate = (props) => {
