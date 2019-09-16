@@ -1,4 +1,4 @@
-var webpack = require('webpack');
+const webpack = require('webpack');
 
 module.exports = {
   entry: {
@@ -23,22 +23,30 @@ module.exports = {
   ],
 
   module: {
-    loaders: [
-      {test: /\.js$/, loader: 'babel', exclude: /node_modules/},
-      {test: /\.less$/, loader: 'style!css!autoprefixer!less'}
+    rules: [
+      {test: /\.js$/, loader: 'babel-loader', exclude: /node_modules/},
+      {
+        test: /\.less$/,
+        use: [
+          {
+            loader: 'style-loader'
+          },
+          {
+            loader: 'css-loader',
+          },
+          {
+            loader: 'less-loader'
+          }
+        ]
+      }
     ]
   },
 
   plugins: [
-    new webpack.optimize.OccurenceOrderPlugin(),
+    new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: '"production"'
-      }
-    }),
-    new webpack.optimize.UglifyJsPlugin({
-      compressor: {
-        warnings: false
       }
     })
   ]

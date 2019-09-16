@@ -1,5 +1,5 @@
-var path = require('path');
-var webpack = require('webpack');
+const path = require('path');
+const webpack = require('webpack');
 
 module.exports = {
   devtool: 'inline-source-map',
@@ -16,9 +16,22 @@ module.exports = {
   },
 
   module: {
-    loaders: [
-      {test: /\.js$/, exclude: /node_modules/, loader: 'babel'},
-      {test: /\.less$/, loader: 'style!css!autoprefixer!less'}
+    rules: [
+      {test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader'},
+      {
+        test: /\.less$/,
+        use: [
+          {
+            loader: 'style-loader'
+          },
+          {
+            loader: 'css-loader'
+          },
+          {
+            loader: 'less-loader'
+          }
+        ]
+      }
     ]
   },
 
@@ -29,8 +42,8 @@ module.exports = {
   },
 
   plugins: [
-    new webpack.optimize.OccurenceOrderPlugin(),
+    new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin()
+    new webpack.NoEmitOnErrorsPlugin()
   ]
 };

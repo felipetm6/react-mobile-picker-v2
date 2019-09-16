@@ -3,16 +3,6 @@ import PropTypes from 'prop-types';
 import './style.less';
 
 class PickerColumn extends Component {
-  static propTypes = {
-    options: PropTypes.array.isRequired,
-    name: PropTypes.string.isRequired,
-    value: PropTypes.any.isRequired,
-    itemHeight: PropTypes.number.isRequired,
-    columnHeight: PropTypes.number.isRequired,
-    onChange: PropTypes.func.isRequired,
-    onClick: PropTypes.func.isRequired
-  };
-
   constructor(props) {
     super(props);
     this.state = {
@@ -172,16 +162,17 @@ class PickerColumn extends Component {
   }
 }
 
-export default class Picker extends Component {
-  static propTyps = {
-    optionGroups: PropTypes.object.isRequired,
-    valueGroups: PropTypes.object.isRequired,
+PickerColumn.propTypes = {
+    options: PropTypes.array.isRequired,
+    name: PropTypes.string.isRequired,
+    value: PropTypes.any.isRequired,
+    itemHeight: PropTypes.number.isRequired,
+    columnHeight: PropTypes.number.isRequired,
     onChange: PropTypes.func.isRequired,
-    onClick: PropTypes.func,
-    itemHeight: PropTypes.number,
-    height: PropTypes.number
-  };
+    onClick: PropTypes.func.isRequired
+};
 
+export default class Picker extends Component {
   static defaultProps = {
     onClick: () => {},
     itemHeight: 36,
@@ -211,7 +202,7 @@ export default class Picker extends Component {
     return (
       <div className="picker-inner">
         {columnNodes}
-        <div className="picker-highlight" style={highlightStyle}></div>
+        <div className="picker-highlight" style={highlightStyle}/>
       </div>
     );
   }
@@ -228,3 +219,12 @@ export default class Picker extends Component {
     );
   }
 }
+
+Picker.propTypes = {
+  optionGroups: PropTypes.object.isRequired,
+  valueGroups: PropTypes.object.isRequired,
+  onChange: PropTypes.func.isRequired,
+  onClick: PropTypes.func,
+  itemHeight: PropTypes.number,
+  height: PropTypes.number
+};
