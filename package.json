@@ -1,11 +1,11 @@
 {
-  "name": "react-mobile-picker",
-  "version": "0.1.12",
+  "name": "react-mobile-picker-v2",
+  "version": "0.2.0",
   "description": "An iOS like select box component for React",
   "main": "lib/react-mobile-picker.js",
   "repository": {
     "type": "git",
-    "url": "adcentury/react-mobile-picker"
+    "url": "felipetm6/react-mobile-picker-v2"
   },
   "dependencies": {
     "prop-types": "^15.6.0"
@@ -67,8 +67,8 @@
     "test": "npm run lint"
   },
   "author": {
-    "name": "Lei Lei",
-    "email": "adcentury100@gmail.com"
+    "name": "Felipe Teixeira Moraes",
+    "email": "dev@felipetm6.com.br"
   },
   "license": "MIT"
 }
